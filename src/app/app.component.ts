@@ -12,6 +12,3 @@ export class AppComponent {
 }
 
 
-$(document).ready(() => {
-  alert("Uyarı deneme")
-})
