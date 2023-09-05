@@ -33,17 +33,17 @@ export class ProductsComponent extends BaseComponent implements OnInit {
     //   }
     // ).subscribe();
 
-    this.httpClientService.put(
-        {
-          controller: "products",
-        },
-        {
-          id: 1,
-          name: "Silgi",
-          stock: 150,
-          price: 10
-        }
-      ).subscribe();
+    // this.httpClientService.put(
+    //     {
+    //       controller: "products",
+    //     },
+    //     {
+    //       id: 1,
+    //       name: "Kalem",
+    //       stock: 150,
+    //       price: 10
+    //     }
+    //   ).subscribe();
 
     // this.httpClientService.delete(
     //   {
