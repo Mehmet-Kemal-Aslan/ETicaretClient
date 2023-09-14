@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FileUploadComponent } from './file-upload.component';
 import { NgxFileDropModule } from 'ngx-file-drop';
+import { DialogModule } from 'src/app/dialogs/dialog.module';
 
 
 @NgModule({
@@ -10,7 +11,7 @@ import { NgxFileDropModule } from 'ngx-file-drop';
   ],
   imports: [
     CommonModule,
-    NgxFileDropModule,
+    NgxFileDropModule
   ], 
   exports: [
     FileUploadComponent
