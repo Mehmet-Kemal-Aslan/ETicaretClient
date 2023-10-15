@@ -13,7 +13,7 @@ export class HttpClientService {
     return `${requestParameter.baseUrl ? requestParameter.baseUrl: this.baseUrl}/${requestParameter.controller}${requestParameter.action ? `/${requestParameter.action}`: "" }`;
   }
 
-  get<T>(requestParameter: Partial<RequestParameters>, id?: string): Observable<T>
+  get<T>(requestParameter: Partial<RequestParameters>, id?: number): Observable<T>
   {
     let url: string = "";
     if(requestParameter.fullEndPoint)
