@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <br/>
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+            <div class="mb-3">
+                <label for="adSoyad" class="form-label">Ad Soyad</label>
+                <input type="text" formControlName="adSoyad" class="form-control" id="adSoyad" aria-describedby="emailHelp" placeholder="Ad Soyad" [ngClass]="{'is-invalid': submitted && component.adSoyad.errors}">
+                <div id="emailHelp" class="form-text">Bilgileriniz paylaşılmayacak.</div>
+                <small class="form-text text-mute invalid-feedback" *ngIf="submitted && component.adSoyad.errors?.required">Lütfen ad soyad giriniz.</small>
+                <small class="form-text text-mute invalid-feedback" *ngIf="submitted && (component.adSoyad.errors?.maxlength || component.adSoyad.errors?.minlength)">Bu bölüm uzunluğu 3 - 50 kararkter olmalıdır..</small>
+            </div>
+            <div class="mb-3">
+                <label for="kullaniciAdi" class="form-label">Kullanıcı Adı</label>
+                <input type="text" formControlName="kullaniciAdi" class="form-control" id="kullaniciAdi" aria-describedby="emailHelp" placeholder="Kullanıcı Adınız" [ngClass]="{'is-invalid': submitted &&  component.kullaniciAdi.errors}">
+                <small class="form-text text-mute invalid-feedback" *ngIf="submitted && component.kullaniciAdi.errors?.required">Lütfen kullanıcı adı giriniz.</small>
+                <small class="form-text text-mute invalid-feedback" *ngIf="submitted && (component.kullaniciAdi.errors?.maxlength || component.kullaniciAdi.errors?.minlength)">Bu bölüm uzunluğu 3 - 50 kararkter olmalıdır..</small>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email adresi</label>
+                <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-posta" [ngClass]="{'is-invalid': submitted && component.email.errors}">
+                <small class="form-text text-mute invalid-feedback" *ngIf="submitted && component.email.errors?.required">Lütfen E-Posta giriniz.</small>
+                <small class="form-text text-mute invalid-feedback" *ngIf="submitted && component.email.errors?.maxlength">Bu bölüm uzunluğu en fazla 70 kararkter olmalıdır.</small>
+                <small class="form-text text-mute invalid-feedback" *ngIf="submitted && component.email.errors?.email">Lütfen bir E-Posta giriniz.</small>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Şifre</label>
+                <input type="password" formControlName="sifre" class="form-control" id="password" placeholder="Şifre" [ngClass]="{'is-invalid': submitted && component.sifre.errors}">
+                <small class="form-text text-mute invalid-feedback" *ngIf="submitted && component.sifre.errors?.required">Lütfen şifre giriniz.</small>
+            </div>
+            <div class="mb-3">
+                <label for="password2" class="form-label">Şifre Tekrarı</label>
+                <input type="password" formControlName="sifreTekrar" class="form-control" id="password2" placeholder="Şifre Tekrarı" [ngClass]="{'is-invalid': submitted && component.sifre.errors}">
+                <small class="form-text text-mute invalid-feedback" *ngIf="submitted && component.sifreTekrar.errors?.required">Lütfen şifreyi tekrar giriniz.</small>
+            </div>
+            <br/>
+            <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>
