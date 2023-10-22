@@ -1,5 +1,7 @@
+import { group } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { User } from 'src/app/Entities/User';
 
 @Component({
   selector: 'app-register',
@@ -34,6 +36,14 @@ export class RegisterComponent {
       sifreTekrar : ["", [
         Validators.required,
       ]]
+    },
+    {
+      validators: (group: AbstractControl): ValidationErrors | null => 
+      {
+        let sifre = group.get("sifre").value;
+        let sifreTekrar = group.get("sifreTekrar").value;
+        return sifre === sifreTekrar ? null : { notSame: true };
+      }
     })
   }
 
@@ -43,7 +53,7 @@ export class RegisterComponent {
   }
 
   submitted: boolean = false;
-  onSubmit(data: any)
+  onSubmit(data: User)
   {
     this.submitted = true;
   }

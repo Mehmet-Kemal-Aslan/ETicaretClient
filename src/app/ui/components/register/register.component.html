@@ -32,6 +32,7 @@
                 <label for="password2" class="form-label">Şifre Tekrarı</label>
                 <input type="password" formControlName="sifreTekrar" class="form-control" id="password2" placeholder="Şifre Tekrarı" [ngClass]="{'is-invalid': submitted && component.sifre.errors}">
                 <small class="form-text text-mute invalid-feedback" *ngIf="submitted && component.sifreTekrar.errors?.required">Lütfen şifreyi tekrar giriniz.</small>
+                <small  *ngIf="submitted && form.hasError('notSame')">Girilen iki şifre aynı olmalıdır.</small>
             </div>
             <br/>
             <button type="submit" class="btn btn-primary">Kayıt Ol</button>
