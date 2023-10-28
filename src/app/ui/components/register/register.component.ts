@@ -1,8 +1,10 @@
 import { group } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/Entities/User';
+import { BaseComponent } from 'src/app/base/base.component';
 import { Create_User } from 'src/app/contracts/Users/Create_User';
 import { MessageType, Position } from 'src/app/services/admin/alertify.service';
 import { UserService } from 'src/app/services/common/models/user.service';
@@ -13,10 +15,13 @@ import { CustomToastrService, ToastrMessageType } from 'src/app/services/ui/cust
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent {
+export class RegisterComponent extends BaseComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, 
     private userService: UserService, 
-    private toastrService: CustomToastrService,) { }
+    private toastrService: CustomToastrService,
+    spinner: NgxSpinnerService) {
+      super(spinner)
+     }
 
   form: FormGroup;
   ngOnInit(): void
