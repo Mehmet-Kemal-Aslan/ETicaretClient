@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CustomToastrService {
 
-  constructor(private toastr: ToastrService) { }
+  constructor(private toastr?: ToastrService) { }
   message(message: String, ToastrMessageType)
   {
     this.toastr[ToastrMessageType](message);

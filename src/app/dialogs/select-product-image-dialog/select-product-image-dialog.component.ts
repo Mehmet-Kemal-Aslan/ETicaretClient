@@ -35,6 +35,7 @@ export class SelectProductImageDialogComponent extends BaseDialog<SelectProductI
 
   async ngOnInit() {
     this.images = await this.productService.readImages(this.data as number);
+    console.log(this.images)
   }
 
 
