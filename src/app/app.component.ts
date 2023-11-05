@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ToastrMessageType } from './services/ui/custom-toastr.service';
 import { CustomToastrService } from './services/ui/custom-toastr.service';
+import { AuthService } from './services/common/auth.service';
+import { Router } from '@angular/router';
 declare var $: any
 
 
@@ -12,11 +14,21 @@ declare var $: any
 })
 export class AppComponent {
   title = 'ETicaretClient';
-  constructor(private toastrService: CustomToastrService) {
+  constructor(private toastrService: CustomToastrService, 
+    public authService: AuthService,
+    private router: Router) {
+    authService.identityCheck();
     // toastrService.message("Merhaba ben toastr", ToastrMessageType.Info,);
     // toastrService.message("Merhaba ben toastr", ToastrMessageType.Error);
     // toastrService.message("Merhaba ben toastr", ToastrMessageType.Warning);
     // toastrService.message("Merhaba ben toastr", ToastrMessageType.Success);
+  }
+
+  signOut() {
+    localStorage.removeItem("accessToken");
+    this.authService.identityCheck();
+    this.router.navigate([""]);
+    this.toastrService.message("Oturumunuz kapatılmıştır", ToastrMessageType.Warning);
   }
 }
 
