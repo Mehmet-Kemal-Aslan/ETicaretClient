@@ -53,4 +53,20 @@ export class UserService {
       console.log("Google üzerinden giriş tamam\n" + tokenResponse);
     }
   }
+
+  async FacebookLogin(user: SocialUser) : Promise<any>
+  {
+    const observable: Observable<SocialUser | TokenResponse> = this.httpClientService.post<SocialUser | TokenResponse>({
+      action: "facebook-login",
+      controller: "users"
+    }, user);
+
+    const tokenResponse: TokenResponse = await firstValueFrom(observable) as TokenResponse;
+
+    if(tokenResponse)
+    {
+      localStorage.setItem("accessToken", tokenResponse.token.accessToken);
+      console.log("Facebook üzerinden giriş tamam\n" + tokenResponse);
+    }
+  }
 }
