@@ -24,49 +24,5 @@ export class UserService {
     return await firstValueFrom(observable) as Create_User;
   }
 
-  async login(userNameOrEmail: string, password: string): Promise<any> {
-    const observable: Observable<any | TokenResponse> = this.httpClientService.post<any | TokenResponse>({
-      controller: "users",
-      action: "login"
-    }, {userNameOrEmail, password})
-
-    const tokenResponse: TokenResponse = await firstValueFrom(observable) as TokenResponse;
-    if(tokenResponse)
-    {
-      localStorage.setItem("accessToken", tokenResponse.token.accessToken);
-      console.log("Giriş tamam\n" + tokenResponse);
-    }
-  }
-
-  async GoogleLogin(user: SocialUser) : Promise<any>
-  {
-    const observable: Observable<SocialUser | TokenResponse> = this.httpClientService.post<SocialUser | TokenResponse>({
-      action: "google-login",
-      controller: "users"
-    }, user);
-
-    const tokenResponse: TokenResponse = await firstValueFrom(observable) as TokenResponse;
-
-    if(tokenResponse)
-    {
-      localStorage.setItem("accessToken", tokenResponse.token.accessToken);
-      console.log("Google üzerinden giriş tamam\n" + tokenResponse);
-    }
-  }
-
-  async FacebookLogin(user: SocialUser) : Promise<any>
-  {
-    const observable: Observable<SocialUser | TokenResponse> = this.httpClientService.post<SocialUser | TokenResponse>({
-      action: "facebook-login",
-      controller: "users"
-    }, user);
-
-    const tokenResponse: TokenResponse = await firstValueFrom(observable) as TokenResponse;
-
-    if(tokenResponse)
-    {
-      localStorage.setItem("accessToken", tokenResponse.token.accessToken);
-      console.log("Facebook üzerinden giriş tamam\n" + tokenResponse);
-    }
-  }
+  
 }

@@ -5,6 +5,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent } from 'src/app/base/base.component';
 import { AuthService } from 'src/app/services/common/auth.service';
 import { UserService } from 'src/app/services/common/models/user.service';
+import { UserAuthService } from 'src/app/services/common/models/user-auth.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { UserService } from 'src/app/services/common/models/user.service';
 })
 export class LoginComponent extends BaseComponent implements OnInit {
 
-  constructor(private userService: UserService,
+  constructor(private UserAuthService: UserAuthService,
     spinner: NgxSpinnerService,
     private authService: AuthService,
     private acivatedRoute: ActivatedRoute,
@@ -27,11 +28,11 @@ export class LoginComponent extends BaseComponent implements OnInit {
         switch(user.provider)
         {
           case "GOOGLE":
-            await userService.GoogleLogin(user);
+            await UserAuthService.GoogleLogin(user);
             this.authService.identityCheck();
             break;
           case "FACEBOOK":
-            await userService.FacebookLogin(user);
+            await UserAuthService.FacebookLogin(user);
             this.authService.identityCheck();
             break;
         }
@@ -44,7 +45,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
 
   async Login(userNameOrEmail: string, password: string)
   {
-    await this.userService.login(userNameOrEmail, password);
+    await this.UserAuthService.login(userNameOrEmail, password);
     this.authService.identityCheck();
     this.acivatedRoute.queryParams.subscribe(params => {
       const returnUrl: string = params["returnUrl"];
