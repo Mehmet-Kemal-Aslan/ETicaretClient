@@ -4,6 +4,7 @@ import { ToastrMessageType } from './services/ui/custom-toastr.service';
 import { CustomToastrService } from './services/ui/custom-toastr.service';
 import { AuthService } from './services/common/auth.service';
 import { Router } from '@angular/router';
+import { HttpClientService } from './services/common/http-client.service';
 declare var $: any
 
 
@@ -16,7 +17,17 @@ export class AppComponent {
   title = 'ETicaretClient';
   constructor(private toastrService: CustomToastrService, 
     public authService: AuthService,
-    private router: Router) {
+    private router: Router,
+    private httpClientService: HttpClientService) {
+      httpClientService.put({
+        controller: "basket"
+      },{
+        id: 3,
+        quantity: 15
+      }).subscribe(data => {
+        console.log("geldim");
+        debugger;
+      });
     authService.identityCheck();
     // toastrService.message("Merhaba ben toastr", ToastrMessageType.Info,);
     // toastrService.message("Merhaba ben toastr", ToastrMessageType.Error);

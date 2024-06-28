@@ -35,13 +35,21 @@ export class SelectProductImageDialogComponent extends BaseDialog<SelectProductI
 
   async ngOnInit() {
     this.images = await this.productService.readImages(this.data as number);
-    console.log(this.images)
+    this.images.forEach(image => {
+      image.path = decodeURI(image.path);
+      console.log(image.path);
+    });
   }
 
 
   async deleteImage(imageId: number)
   { 
     await this.productService.deleteImage(this.data as number, imageId);
+  }
+
+  showCase(imageId: number)
+  {
+    this.productService.ChangeShowCaseImage(imageId, this.data as number)
   }
 }
 

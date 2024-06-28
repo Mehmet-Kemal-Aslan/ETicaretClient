@@ -63,10 +63,11 @@ export class ProductService {
       action: "GetProductImages",
       controller: "products"
     }, id);
-
-    return await firstValueFrom(getObservable);
+    
+    const images: List_Product_Images[] = await firstValueFrom(getObservable);
+    return images;
   }
-
+n
   async deleteImage(id: number, imageId: number, )
   {
     const deleteObservable = this.httpClientService.delete({
@@ -74,7 +75,18 @@ export class ProductService {
       controller: "products",
       queryString: `imageId=${imageId}`
     }, id)
+    
     await firstValueFrom(deleteObservable);
+  }
+
+  async ChangeShowCaseImage(imageId: number, productId: number) : Promise<void>
+  {
+    const changeShowCaseImage = this.httpClientService.put({
+      action: "ChangeShowCaseImage",
+      controller: "products",
+      queryString: `imageId=${imageId}&productId=${productId}`
+    },{})
+    await firstValueFrom(changeShowCaseImage)
   }
 
 }
