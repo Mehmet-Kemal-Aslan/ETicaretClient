@@ -15,9 +15,9 @@
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" routerLink="products">Ürünler</a>
                   </li>
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
                     <a class="nav-link active" aria-current="page" routerLink="baskets">Sepet</a>
-                  </li>
+                  </li> -->
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" routerLink="register" *ngIf="!authService.isAuthenticated">Kayıt Ol</a>
                   </li>
@@ -45,10 +45,13 @@
                     <a class="nav-link disabled" aria-disabled="true">Disabled</a>
                   </li> -->
                 </ul>
-                <form class="d-flex" role="search">
+                <!-- <form class="d-flex" role="search">
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                   <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                </form> -->
+                <div class="d-flex">
+                  <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal" type="submit">Sepet</button>
+                </div>
               </div>
             </div>
           </nav>        
@@ -69,3 +72,4 @@
 <ngx-spinner name="s2" type="ball-scale-multiple"></ngx-spinner>
 <ngx-spinner name="s3" type="ball-atom"></ngx-spinner>
 
+<app-baskets></app-baskets>

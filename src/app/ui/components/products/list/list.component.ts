@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MessageType } from '@microsoft/signalr';
+import { Create_Basket_Item } from 'src/app/contracts/Basket/create_basket_item';
 import { BaseUrl } from 'src/app/contracts/baseUrl';
 import { List_Product } from 'src/app/contracts/list_products';
+import { Position } from 'src/app/services/admin/alertify.service';
+import { BasketService } from 'src/app/services/common/models/basket.service';
 import { FileService } from 'src/app/services/common/models/file.service';
 import { ProductService } from 'src/app/services/common/models/product.service';
+import { CustomToastrService, ToastrMessageType } from 'src/app/services/ui/custom-toastr.service';
 
 @Component({
   selector: 'app-list',
@@ -11,7 +16,8 @@ import { ProductService } from 'src/app/services/common/models/product.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent {
-  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private fileService: FileService) {}
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private fileService: FileService, 
+    private basketService: BasketService, private customToastrService: CustomToastrService ) {}
   
   currentPageNo: number;
   totalPageCount: number;
@@ -74,5 +80,15 @@ export class ListComponent {
         for (let i = this.currentPageNo - 3; i <= this.currentPageNo + 3; i++)
           this.pageList.push(i);
     })
+  }
+
+  async addToBasket(product: List_Product){
+    let _basketItem: Create_Basket_Item = new Create_Basket_Item();
+    _basketItem.productId = product.id;
+    _basketItem.quantity = 1;
+    await this.basketService.add(_basketItem);
+    this.customToastrService.message("Ürün sepete eklendi",
+      ToastrMessageType.Success
+    )
   }
 }

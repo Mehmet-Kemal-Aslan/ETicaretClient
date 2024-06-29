@@ -18,6 +18,7 @@ import { LoginComponent } from './ui/components/login/login.component';
 import { GoogleLoginProvider, GoogleSigninButtonModule, SocialAuthServiceConfig, SocialLoginModule,
   FacebookLoginProvider } from '@abacritt/angularx-social-login';
 import { HttpErrorHandlerInterceptorService } from './services/common/http-error-handler-interceptor.service';
+import { BasketsModule } from './ui/components/baskets/baskets.module';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { HttpErrorHandlerInterceptorService } from './services/common/http-error
     ToastrModule.forRoot(),
     AppRoutingModule,
     AdminModule,
+    BasketsModule,
     UiModule,
     RouterModule,
     NgxSpinnerModule,

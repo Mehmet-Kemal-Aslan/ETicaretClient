@@ -19,15 +19,15 @@ export class AppComponent {
     public authService: AuthService,
     private router: Router,
     private httpClientService: HttpClientService) {
-      httpClientService.put({
-        controller: "basket"
-      },{
-        id: 3,
-        quantity: 15
-      }).subscribe(data => {
-        console.log("geldim");
-        debugger;
-      });
+      // httpClientService.put({
+      //   controller: "basket"
+      // },{
+      //   id: 3,
+      //   quantity: 15
+      // }).subscribe(data => {
+      //   console.log("geldim");
+      //   debugger;
+      // });
     authService.identityCheck();
     // toastrService.message("Merhaba ben toastr", ToastrMessageType.Info,);
     // toastrService.message("Merhaba ben toastr", ToastrMessageType.Error);
