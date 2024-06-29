@@ -23,7 +23,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
     private socialAuthService: SocialAuthService) {
       super(spinner)
       socialAuthService.authState.subscribe(async(user: SocialUser) => {
-        debugger;
+        ;
         console.log(user);
         switch(user.provider)
         {
@@ -58,7 +58,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
 
   facebookLogin()
   {
-    debugger;
+    
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 }

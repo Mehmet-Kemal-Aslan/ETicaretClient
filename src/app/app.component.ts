@@ -19,11 +19,11 @@ export class AppComponent {
     public authService: AuthService,
     private router: Router,
     private httpClientService: HttpClientService) {
-      // httpClientService.put({
+      // httpClientService.post({
       //   controller: "basket"
       // },{
-      //   id: 3,
-      //   quantity: 15
+      //   ProductId: 2,
+      //   quantity: 30
       // }).subscribe(data => {
       //   console.log("geldim");
       //   debugger;

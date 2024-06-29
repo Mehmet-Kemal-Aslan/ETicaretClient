@@ -16,13 +16,14 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                  <tr class="{{basketItem.basketItemId}}"*ngFor="let basketItem of basketItems; let i=index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{basketItem.name}}</td>
+                    <td>{{basketItem.price}}</td>
                     <td>
-                        <input type="number" value="5" style="width:60px;"/>
+                        <input type="number" [value]="basketItem.quantity" style="width:60px;" data-id="{{basketItem.basketItemId}}" (change)="changeQuantity($event)"/>
                     </td>
+                    <td><button type="button" class="btn btn-danger" (click)="removeBasketItem(basketItem.basketItemId)">X</button></td>
                   </tr>
                 </tbody>
               </table>
